@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Todo } from '../../Todo';
 @Component({
   selector: 'app-add-todo',
   imports: [],
@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   standalone: true, // This indicates a standalone component
 })
 export class AddTodoComponent {
+  todos: Todo[] = [];
 
 }
