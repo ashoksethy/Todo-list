@@ -1,1 +1,7 @@
-<p>add-todo works!</p>
+<p>Here is list of todos</p>
+<ul>
+    <li *ngFor="let todo of todos">
+      {{ todo.sno }} - {{ todo.title }} - {{ todo.desc }}
+    </li>
+  </ul>
+  
