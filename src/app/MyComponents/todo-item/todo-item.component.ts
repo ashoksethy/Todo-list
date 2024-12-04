@@ -8,4 +8,7 @@ import { Todo } from '../../../../src/app/Todo';
 })
 export class TodoItemComponent {
   @Input() todo: Todo | undefined;
+  onClick(){
+    console.log("Delete has been clilcked");
+  }
 }
