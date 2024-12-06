@@ -1,6 +1,11 @@
 <div class="my-3">
-    <p>{{todo?.title}}</p>
-    <p>{{todo?.desc}}</p>
-    <p>Here is all ToDo list</p>
-    <button class="btn btn-danger" (click)="onClick()">Delete</button>    
+    <!-- <p class=" mb-0">{{todo?.title}}</p>
+    <p class=" mb-1">{{todo?.desc}}</p>
+    <button class="btn btn-danger" >Delete</button>   -->
+    
+    <div class="card-body">
+        <h5 class="card-title">{{todo?.title}}</h5>
+        <p class="card-text">{{todo?.desc}}</p>
+        <a href="#" class="btn btn-primary" (click)="onClick()">Delete</a>
+      </div>
 </div>
