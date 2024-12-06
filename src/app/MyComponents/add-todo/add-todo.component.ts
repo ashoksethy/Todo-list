@@ -33,5 +33,8 @@ export class AddTodoComponent {
       },
     ]
   }
+  deleteTodo(todo: Todo){
+    console.log(todo);
+  }
 
 }
