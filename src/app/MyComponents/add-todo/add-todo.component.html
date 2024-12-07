@@ -1,8 +1,16 @@
-<p>Here is list of todos</p>
-<div>
-    <div *ngFor="let todo of todos">
-      <app-todo-item [todo]="todo" (todoDelete)="deleteTodo($event)"></app-todo-item>
-      <!-- {{ todo.sno }} - {{ todo.title }} - {{ todo.desc }} -->
+
+<div class="my3">
+  <h5>Add Your Todos</h5>
+  <form>
+    <div class="form-group">
+      <label for="title">Todo Title</label>
+      <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
     </div>
-  </div>
-  
+    <div class="form-group">
+      <label for="desceiption">Desceiption</label>
+      <input type="test" class="form-control" id="desceiption" >
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Add Todo</button>
+  </form>
+</div>

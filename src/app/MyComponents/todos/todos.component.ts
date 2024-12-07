@@ -2,14 +2,15 @@ import { Component } from '@angular/core';
 import { Todo } from '../../Todo';
 import { CommonModule } from '@angular/common';
 import { TodoItemComponent } from "../todo-item/todo-item.component";
+import { AddTodoComponent } from "../add-todo/add-todo.component";
 @Component({
-  selector: 'app-add-todo',
-  imports: [CommonModule, TodoItemComponent],
-  templateUrl: './add-todo.component.html',
-  styleUrl: './add-todo.component.css',
+  selector: 'app-todos',
+  imports: [CommonModule, TodoItemComponent, AddTodoComponent],
+  templateUrl: './todos.component.html',
+  styleUrl: './todos.component.css',
   standalone: true, // This indicates a standalone component
 })
-export class AddTodoComponent {
+export class TodoComponent {
   todos: Todo[] = [];
   constructor(){
     this.todos =[
