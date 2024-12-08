@@ -2,15 +2,18 @@ import { Component } from '@angular/core';
 import { Todo } from '../../Todo';
 import { CommonModule } from '@angular/common';
 import { TodoItemComponent } from "../todo-item/todo-item.component";
+import { FormsModule } from '@angular/forms'; // Import FormsModule
 @Component({
   selector: 'app-add-todo',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './add-todo.component.html',
   styleUrl: './add-todo.component.css',
   standalone: true, // This indicates a standalone component
 })
 export class AddTodoComponent {
   todos: Todo[] = [];
+  title: string = ''; // Define title
+  desc: string = ''; // Define description
   constructor(){
     this.todos =[
       {
@@ -37,6 +40,16 @@ export class AddTodoComponent {
     console.log(todo);
     const index = this.todos.indexOf(todo);
     this.todos.splice(index, 1); //2nd parameter means remove one item only
+  }
+  onSubmit() {
+    console.log('Title:', this.title, 'Description:', this.desc);
+    // Add your logic here
+   const todo={
+    sno: 8,
+    title: this.title,
+    desc: this.desc,
+    active: true
+   }
   }
 
 }
