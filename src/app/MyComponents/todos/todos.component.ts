@@ -39,5 +39,11 @@ export class TodoComponent {
     const index = this.todos.indexOf(todo);
     this.todos.splice(index, 1); //2nd parameter means remove one item only
   }
+  addTodo(todo: Todo){
+    console.log(todo);
+   
+    this.todos.push(todo); //2nd parameter means remove one item only
+  }
+
 
 }

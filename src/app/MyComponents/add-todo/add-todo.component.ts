@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Todo } from '../../Todo';
 import { CommonModule } from '@angular/common';
 import { TodoItemComponent } from "../todo-item/todo-item.component";
@@ -14,6 +14,7 @@ export class AddTodoComponent {
   todos: Todo[] = [];
   title: string = ''; // Define title
   desc: string = ''; // Define description
+  @Output() todoAdd: EventEmitter<Todo>= new EventEmitter();
   constructor(){
     this.todos =[
       {
@@ -50,6 +51,7 @@ export class AddTodoComponent {
     desc: this.desc,
     active: true
    }
+   this.todoAdd.emit(todo);
   }
 
 }
