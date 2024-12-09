@@ -11,38 +11,32 @@ import { AddTodoComponent } from "../add-todo/add-todo.component";
   standalone: true, // This indicates a standalone component
 })
 export class TodoComponent {
+  localItem : string | null = "";
   todos: Todo[] = [];
+  
   constructor(){
-    this.todos =[
-      {
-        sno:1,
-        title: "This is title",
-        desc: "Description",
-        active: true
-      },
-      {
-        sno:2,
-        title: "This is title 2",
-        desc: "Description",
-        active: true
-      },
-      {
-        sno:3,
-        title: "This is title 3",
-        desc: "Description",
-        active: true
-      },
-    ]
+    // this.localItem = localStorage.getItem("todos");
+    // if(typeof window !== "undefined" && localStorage){
+    //   this.localItem = localStorage.getItem("todos") ?? "[]"; // Safely access localStorage
+    //   this.todos = JSON.parse(this.localItem);
+    //   // this.todos = [];
+    // }
+    // else{
+    //   this.todos = []; // Default value when not in browser
+    //   // this.todos = JSON.parse(this.localItem);
+    // }
+    this.todos =[];
   }
   deleteTodo(todo: Todo){
     console.log(todo);
     const index = this.todos.indexOf(todo);
     this.todos.splice(index, 1); //2nd parameter means remove one item only
+    localStorage.setItem("todos",JSON.stringify(this.todos));
   }
   addTodo(todo: Todo){
     console.log(todo);
-   
     this.todos.push(todo); //2nd parameter means remove one item only
+    localStorage.setItem("todos",JSON.stringify(this.todos));
   }
 
 
