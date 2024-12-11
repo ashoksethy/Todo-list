@@ -3,6 +3,9 @@ import { Todo } from '../../Todo';
 import { CommonModule } from '@angular/common';
 import { TodoItemComponent } from "../todo-item/todo-item.component";
 import { AddTodoComponent } from "../add-todo/add-todo.component";
+// import { isPlatformBrowser } from '@angular/common';
+// import { Inject, PLATFORM_ID } from '@angular/core';
+
 @Component({
   selector: 'app-todos',
   imports: [CommonModule, TodoItemComponent, AddTodoComponent],
@@ -13,19 +16,17 @@ import { AddTodoComponent } from "../add-todo/add-todo.component";
 export class TodoComponent {
   localItem : string | null = "";
   todos: Todo[] = [];
+  localStorage: string | null = "";
   
-  constructor(){
-    // this.localItem = localStorage.getItem("todos");
-    // if(typeof window !== "undefined" && localStorage){
-    //   this.localItem = localStorage.getItem("todos") ?? "[]"; // Safely access localStorage
-    //   this.todos = JSON.parse(this.localItem);
-    //   // this.todos = [];
-    // }
-    // else{
-    //   this.todos = []; // Default value when not in browser
-    //   // this.todos = JSON.parse(this.localItem);
-    // }
-    this.todos =[];
+  constructor()
+  {
+    if (typeof window !== 'undefined' && localStorage) {
+      this.localItem = localStorage.getItem("todos") ?? "[]"; // Fallback to an empty array string
+      this.todos = JSON.parse(this.localItem);
+    } else {
+      this.todos = []; // Default value for non-browser environments
+    }
+    
   }
   deleteTodo(todo: Todo){
     console.log(todo);
@@ -38,6 +39,5 @@ export class TodoComponent {
     this.todos.push(todo); //2nd parameter means remove one item only
     localStorage.setItem("todos",JSON.stringify(this.todos));
   }
-
 
 }
