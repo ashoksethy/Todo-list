@@ -16,4 +16,7 @@ export class TodoItemComponent {
     this.todoDelete.emit(todo);
     console.log("Delete has been clilcked");
   }
+  onCheckboxClick(todos:Todo){
+
+  }
 }

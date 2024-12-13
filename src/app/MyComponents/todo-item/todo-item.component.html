@@ -4,8 +4,14 @@
     <button class="btn btn-danger" >Delete</button>   -->
     
     <div class="card-body">
-        <h5 class="card-title">{{todo.title}}</h5>
+        <!-- <h5 [class]="'nostrike'?todo.active:'strike'">{{todo.title}}</h5> -->
+        <h5 [class.nostrike]="todo.active" [class.strike]="!todo.active">{{todo.title}}</h5>
+
         <p class="card-text">{{todo.desc}}</p>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" (click)="onCheckboxClick(todo)">
+          <label class="form-check-label" for="exampleCheck1">Mark As Done</label>
+        </div>
         <button type="button" class="btn btn-danger btn-sm"  (click)="onClick(todo)">Danger</button>
       </div>
       
