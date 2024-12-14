@@ -16,20 +16,20 @@ import { AddTodoComponent } from "../add-todo/add-todo.component";
 export class TodoComponent {
   localItem : string | null = "";
   todos: Todo[] = [];
-  localStorage: string | null = "";
+  // localStorage: string | null = "";
   
   constructor()
   {
-    if (typeof window !== 'undefined' && localStorage) {
-      this.localItem = localStorage.getItem("todos") ?? "[]"; // Fallback to an empty array string
+    if (typeof window !== 'undefined') {
+      this.localItem = localStorage.getItem("todos") || "[]";
       this.todos = JSON.parse(this.localItem);
     } else {
-      this.todos = []; // Default value for non-browser environments
+        this.todos = [];
     }
     
   }
   deleteTodo(todo: Todo){
-    console.log(todo);
+    // console.log(todo);
     const index = this.todos.indexOf(todo);
     this.todos.splice(index, 1); //2nd parameter means remove one item only
     localStorage.setItem("todos",JSON.stringify(this.todos));
@@ -37,6 +37,11 @@ export class TodoComponent {
   addTodo(todo: Todo){
     console.log(todo);
     this.todos.push(todo); //2nd parameter means remove one item only
+    localStorage.setItem("todos",JSON.stringify(this.todos));
+  }
+  toggleTodo(todo: Todo){
+    const index = this.todos.indexOf(todo);
+    this.todos[index].active = !this.todos[index].active;
     localStorage.setItem("todos",JSON.stringify(this.todos));
   }
 
