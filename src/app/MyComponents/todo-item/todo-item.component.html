@@ -11,12 +11,13 @@
         <!-- <h5 class="test" [ngClass]="{strike: !todo.active}">{{todo.title}}</h5> -->
         <!-- [ngClass] ="{ strike : !todo.active}" -->
         <h5 class="test" class="{{ todo.active ? '' : 'strike' }}">{{todo.title}}</h5>
-        <p class="card-text" >{{todo.desc}}</p>
+        <p class="card-text" class="{{ todo.active ? '' : 'strike' }}">{{todo.desc}}</p>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" (click)="onCheckboxClick(todo)">
-          <label class="form-check-label" for="exampleCheck1">Toggle Done</label>
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" (click)="onCheckboxClick(todo)" [checked]="
+          !todo.active">
+          <label class="form-check-label" for="exampleCheck1">Done</label>
         </div>
-        <button type="button" class="btn btn-danger btn-sm"  (click)="onClick(todo)">Danger</button>
+        <button type="button" class="btn btn-danger btn-sm"  (click)="onClick(todo)">Delete</button>
       </div>
       
 </div>

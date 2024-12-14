@@ -4,3 +4,8 @@
 .nostrike {
   text-decoration: none;
 }
+.card-body{
+  margin: 0px;
+  background: #e3e3e3;
+  padding: 10px;
+}
