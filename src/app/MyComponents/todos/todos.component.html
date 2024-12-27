@@ -5,11 +5,15 @@
 
 <ng-template #thenBlock>No Todos to display</ng-template>
 <ng-template #elseBlock>
-  <div>
-    <div *ngFor="let todo of todos">
-      <app-todo-item [todo]="todo" (todoDelete)="deleteTodo($event)" (todoCheckbox)="toggleTodo($event)"></app-todo-item>
-      <!-- {{ todo.sno }} - {{ todo.title }} - {{ todo.desc }} -->
+
+  <div cdkDropListGroup class="todo-container">
+    <div cdkDropList [cdkDropListData]="todos" class="todolist" (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let todo of todos" cdkDrag>
+        <app-todo-item [todo]="todo" (todoDelete)="deleteTodo($event)" (todoCheckbox)="toggleTodo($event)"></app-todo-item>
+      </div>
     </div>
   </div>
+
+
 </ng-template>
   

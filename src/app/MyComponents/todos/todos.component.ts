@@ -5,10 +5,11 @@ import { TodoItemComponent } from "../todo-item/todo-item.component";
 import { AddTodoComponent } from "../add-todo/add-todo.component";
 // import { isPlatformBrowser } from '@angular/common';
 // import { Inject, PLATFORM_ID } from '@angular/core';
-
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop'; // Import DragDropModule
 @Component({
   selector: 'app-todos',
-  imports: [CommonModule, TodoItemComponent, AddTodoComponent],
+  imports: [CommonModule, TodoItemComponent, AddTodoComponent,     DragDropModule],
   templateUrl: './todos.component.html',
   styleUrl: './todos.component.css',
   standalone: true, // This indicates a standalone component
@@ -44,5 +45,7 @@ export class TodoComponent {
     this.todos[index].active = !this.todos[index].active;
     localStorage.setItem("todos",JSON.stringify(this.todos));
   }
-
+  drop(event: CdkDragDrop<any[]>) {
+    moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
+  }
 }

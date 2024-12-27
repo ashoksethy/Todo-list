@@ -1,25 +1,21 @@
 import { Component } from '@angular/core';
 import { AddTodoComponent } from './MyComponents/add-todo/add-todo.component';
-import { TodoComponent } from "./MyComponents/todos/todos.component"; 
+import { TodoComponent } from './MyComponents/todos/todos.component'; 
+import { CommonModule } from '@angular/common';
+
 
 @Component({
-  // declarations: [
-  //   AppComponent,
-  //   AddTodoComponent // Declare your new component here
-  // ],
-  imports: [TodoComponent], // Import the standalone component here
-  providers: [],
+  imports: [
+    AddTodoComponent, 
+    TodoComponent, 
+    CommonModule, 
+
+  ],
   selector: 'app-root',
-  // imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  standalone: true, // Ensure AppComponent is also standalone
+  styleUrls: ['./app.component.css'], // Fixed typo in previous response
+  standalone: true,
 })
 export class AppComponent {
   title = 'ToDo-list';
-//  constructor(){
-//   setTimeout(() => {
-//     this.title = 'Changed Titile';
-//   }, 2000);
-//  }
 }
