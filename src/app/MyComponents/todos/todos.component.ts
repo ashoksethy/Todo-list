@@ -47,5 +47,13 @@ export class TodoComponent {
   }
   drop(event: CdkDragDrop<any[]>) {
     moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
+
+    // Update 'sno' values after reordering
+    this.todos.forEach((todo, index) => {
+      todo.sno = index + 1;
+    });
+
+    // Save updated array to localStorage
+    localStorage.setItem('todos', JSON.stringify(this.todos));
   }
 }
