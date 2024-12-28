@@ -15,6 +15,7 @@ describe('TodoItemComponent', () => {
     fixture = TestBed.createComponent(TodoItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    // need to add restet code after submmit
   });
 
   it('should create', () => {
