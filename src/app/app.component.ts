@@ -5,8 +5,7 @@ import { CommonModule } from '@angular/common';
 
 
 @Component({
-  imports: [
-    AddTodoComponent, 
+  imports: [ 
     TodoComponent, 
     CommonModule, 
 

@@ -44,14 +44,19 @@ export class AddTodoComponent {
   }
   onSubmit() {
     console.log('Title:', this.title, 'Description:', this.desc);
-    // Add your logic here
-   const todo={
-    sno: 8,
-    title: this.title,
-    desc: this.desc,
-    active: true
-   }
-   this.todoAdd.emit(todo);
-  }
+    // Create the new Todo
+    const todo = {
+        sno: this.todos.length > 0 ? this.todos[0].sno + 1 : 1, // Increment sno based on the first item's sno
+        title: this.title,
+        desc: this.desc,
+        active: true
+    };
+    this.todos.unshift(todo); // Add to the beginning of the list
+    this.todoAdd.emit(todo); // Emit the new Todo
+
+    // Reset the form fields
+    this.title = '';
+    this.desc = '';
+}
 
 }

@@ -8,12 +8,16 @@
 
   <div cdkDropListGroup class="todo-container">
     <div cdkDropList [cdkDropListData]="todos" class="todolist" (cdkDropListDropped)="drop($event)">
-      <div *ngFor="let todo of todos" cdkDrag>
-        <app-todo-item [todo]="todo" (todoDelete)="deleteTodo($event)" (todoCheckbox)="toggleTodo($event)"></app-todo-item>
+      <div *ngFor="let todo of todos.slice().reverse()" cdkDrag>
+        <app-todo-item 
+          [todo]="todo" 
+          (todoDelete)="deleteTodo($event)" 
+          (todoCheckbox)="toggleTodo($event)">
+        </app-todo-item>
       </div>
     </div>
   </div>
-
+  
 
 </ng-template>
   
